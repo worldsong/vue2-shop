@@ -5,16 +5,19 @@
 ## Build Setup
 
 ``` bash
-# install dependencies
+# project init(项目初始化)
+vue init webpack vue-shop
+
+# install dependencies（安装依赖）
 npm install
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at localhost:8080（试运行）
 npm run dev
 
-# build for production with minification
+# build for production with minification（项目构建）
 npm run build
 
-# build for production and view the bundle analyzer report
+# build for production and view the bundle analyzer report（打包分析报告）
 npm run build --report
 ```
 
