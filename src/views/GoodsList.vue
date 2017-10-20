@@ -105,7 +105,7 @@
             getGoodsList(){
                 axios.get("/goods").then((result) => {
                     var res = result.data;
-                    this.goodsList = res.result;
+                    this.goodsList = res.result.list;
                 })
             },
             setPriceFilter(index){
