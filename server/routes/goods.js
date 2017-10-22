@@ -22,7 +22,7 @@ mongoose.connection.on("disconnected", function () {
 /*
     测试：http://localhost:4000/goods?page=2&pageSize=8&sort=1
  */
-router.get("/", function (req, res, next) {
+router.get("/list", function (req, res, next) {
     let page = parseInt(req.param("page"));
     let pageSize = parseInt(req.param("pageSize"));
     let priceLevel = req.param("priceLevel");
