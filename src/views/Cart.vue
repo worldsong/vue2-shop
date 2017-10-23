@@ -65,7 +65,7 @@
                             <li v-for="item in cartList">
                                 <div class="cart-tab-1">
                                     <div class="cart-item-check">
-                                        <a href="javascipt:;" class="checkbox-btn item-check-btn" v-bind:class="{'check':item.checked=='1'}">
+                    <a href="javascipt:;" class="checkbox-btn item-check-btn" v-bind:class="{'check':item.checked=='1'}" @click="editCart('checked',item)">
                                             <svg class="icon icon-ok">
                                                 <use xlink:href="#icon-ok"></use>
                                             </svg>
@@ -85,9 +85,9 @@
                                     <div class="item-quantity">
                                         <div class="select-self select-self-open">
                                             <div class="select-self-area">
-                                                <a class="input-sub">-</a>
+                                                <a class="input-sub" @click="editCart('minu',item)">-</a>
                                                 <span class="select-ipt">{{item.productNum}}</span>
-                                                <a class="input-add">+</a>
+                                                <a class="input-add" @click="editCart('add',item)">+</a>
                                             </div>
                                         </div>
                                     </div>
@@ -112,8 +112,8 @@
                     <div class="cart-foot-inner">
                         <div class="cart-foot-l">
                             <div class="item-all-check">
-                                <a href="javascipt:;">
-                                    <span class="checkbox-btn item-check-btn">
+                                <a href="javascipt:;" @click="toggleCheckAll">
+                                    <span class="checkbox-btn item-check-btn" v-bind:class="{'check':checkAllFlag}">
                                         <svg class="icon icon-ok"><use xlink:href="#icon-ok"/></svg>
                                     </span>
                                     <span>全选</span>
@@ -187,6 +187,16 @@
             this.init();
         },
         computed:{
+            checkAllFlag(){
+                return this.checkedCount == this.cartList.length;
+            },
+            checkedCount(){
+                var i = 0;
+                this.cartList.forEach((item)=>{
+                    if(item.checked=='1')i++;
+                })
+                return i;
+            },
             totalPrice(){
                 var money = 0;
                 this.cartList.forEach((item)=>{
@@ -228,6 +238,43 @@
                         this.init();
                     }
                 });
+            },
+            editCart(flag,item){
+                if(flag=='add'){
+                    item.productNum++;
+                }else if(flag=='minu'){
+                    if(item.productNum<=1){
+                        return;
+                    }
+                    item.productNum--;
+                }else{
+                    item.checked = item.checked=="1"?'0':'1';
+                }
+
+                axios.post("/users/cartEdit",{
+                    productId:item.productId,
+                    productNum:item.productNum,
+                    checked:item.checked
+                }).then((response)=>{
+                    let res = response.data;
+                    if(res.status=='0'){
+                        console.log("update suc");
+                    }
+                })
+            },
+            toggleCheckAll(){
+                var flag = !this.checkAllFlag;
+                this.cartList.forEach((item)=>{
+                    item.checked = flag?'1':'0';
+                })
+                axios.post("/users/editCheckAll",{
+                  checkAll:flag
+                }).then((response)=>{
+                    let res = response.data;
+                    if(res.status=='0'){
+                        console.log("update suc");
+                    }
+                })
             },
         }
     }
