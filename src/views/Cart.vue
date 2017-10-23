@@ -282,7 +282,9 @@
             },
             checkOut(){
                 if(this.checkedCount>0){
-                    alert('结算')
+                    this.$router.push({
+                        path:"/address"
+                    });
                 }
             }
         }
