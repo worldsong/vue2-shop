@@ -124,13 +124,21 @@
                 </div>
             </div>
         </div>
-        <modal :mdShow="isMdShow" @close="closeModal">
+        <modal :mdShow="isMdShow_del" @close="closeModal">
             <p slot="message">
                 您是否确认要删除此地址?
             </p>
             <div slot="btnGroup">
                 <a class="btn btn--m" href="javascript:;" @click="delAddress">确认</a>
-                <a class="btn btn--m btn--red" href="javascript:;" @click="isMdShow=false">取消</a>
+                <a class="btn btn--m btn--red" href="javascript:;" @click="isMdShow_del=false">取消</a>
+            </div>
+        </modal>
+        <modal :mdShow="isMdShow_undel" @close="closeModal">
+            <p slot="message">
+                地址列表至少有一条数据，已无法继续删除。
+            </p>
+            <div slot="btnGroup">
+                <a class="btn btn--m btn--red" href="javascript:;" @click="isMdShow_undel=false">取消</a>
             </div>
         </modal>
         <nav-footer></nav-footer>
@@ -152,7 +160,8 @@
                 checkIndex:0,
                 selectedAddrId:'',
                 addressList:[],
-                isMdShow:false,
+                isMdShow_del:false,
+                isMdShow_undel:false,
                 addressId:''
             }
         },
@@ -198,11 +207,16 @@
                 })
             },
             closeModal(){
-                this.isMdShow = false;
+                this.isMdShow_del = false;
+                this.isMdShow_undel = false;
             },
             delAddressConfirm(addressId){
-                this.isMdShow = true;
-                this.addressId = addressId;
+                if(this.addressList.length > 1){
+                    this.isMdShow_del = true;
+                    this.addressId = addressId;
+                }else {
+                    this.isMdShow_undel = true;
+                }
             },
             delAddress(){
                 axios.post("/users/delAddress",{
@@ -211,7 +225,7 @@
                     let res = response.data;
                     if(res.status=="0"){
                         console.log("del suc");
-                        this.isMdShow = false;
+                        this.isMdShow_del = false;
                         this.init();
                     }
                 })
