@@ -3,6 +3,19 @@
 > A shop developed with Vue2 + Vue-router + Axios + Vuex + Node + Express + MongoDB + Webpack
 > http://101.200.129.112:4000/#/goods
 
+## Run Setup
+
+注意：先启动MongoDB
+
+``` bash
+# cd server
+# npm i (商城服务端依赖安装)
+# node bin/www (启动服务端)
+
+# cd .. (切到项目根目录)
+# npm i (Vue项目依赖安装)
+# npm start (Vue商城启动)
+
 ## Build Setup
 
 ``` bash
