@@ -14,7 +14,7 @@ Vue.use(infiniteScroll);
 Vue.use(Vuex);
 Vue.use(VueLazyload, {
     loading: 'static/loading-svg/loading-bars.svg',
-    try: 3 // default 1
+    attempt: 3 // default 1
 })
 
 Vue.filter("currency",currency);
