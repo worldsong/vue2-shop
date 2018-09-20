@@ -1,7 +1,7 @@
 # vue2-shop
 
 > A shop developed with Vue2 + Vue-router + Axios + Vuex + Node + Express + MongoDB + Webpack
-> http://101.200.129.112:4000/#/goods
+> http://gupaoshop.songfens.club/
 
 ## Run Setup
 
@@ -36,4 +36,4 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-more info, contact with 2060884089@qq.com
+more info, contact with 1746948032@qq.com
