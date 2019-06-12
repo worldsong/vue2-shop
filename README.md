@@ -36,4 +36,21 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-more info, contact with 1746948032@qq.com
+more info, contact with 772083612@qq.com
+
+### 全栈商城项目实战
+Vue2商城需求分析及框架搭建，商品列表实现
+
+商品列表模块实现的两种方式
+
+商城后台框架搭建与商品列表滚动分页
+
+业务功能开发（一）（分页查询及登录拦截）
+
+业务功能开发（二）（购物车）
+
+业务功能开发（三）（购物车及收货详情）
+
+业务功能开发（四）（订单处理）
+
+Vue项目打包优化及部署上线+课程总结
