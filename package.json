@@ -1,8 +1,8 @@
 {
   "name": "vue-shop",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "worldsong <2060884089@qq.com>",
+  "description": "Vue全栈商城项目",
+  "author": "worldsong <772083612@qq.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
