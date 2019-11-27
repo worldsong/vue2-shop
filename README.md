@@ -1,7 +1,7 @@
 # vue2-shop
 
 > A shop developed with Vue2 + Vue-router + Axios + Vuex + Node + Express + MongoDB + Webpack
-> http://gupaoshop.songfens.club/
+> http://vue2shop.songfens.club/
 
 ## Run Setup
 
